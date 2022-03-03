@@ -27,6 +27,7 @@ class CustomInputField extends StatelessWidget {
             style: titleStyle,
           ),
           Container(
+            height: 52,
             margin: EdgeInsets.only(top: 8.0),
             padding: EdgeInsets.only(left: 14),
             decoration:
@@ -35,13 +36,20 @@ class CustomInputField extends StatelessWidget {
               children: [
                 Expanded(
                     child: TextFormField(
-                  readOnly: Widget == null ? false : true,
+                  autofocus: false,
+                  readOnly: widget == null ? false : true,
                   cursorColor:
                       Get.isDarkMode ? Colors.grey[100] : Colors.grey[700],
                   controller: controller,
                   style: subTitleStyle,
                   decoration: InputDecoration(
                     hintText: hint,
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: context.theme.backgroundColor, width: 0)),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: context.theme.backgroundColor, width: 0)),
                   ),
                 )),
                 widget == null

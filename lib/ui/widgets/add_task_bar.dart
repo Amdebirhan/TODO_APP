@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:todo_app/controllers/task_controller.dart';
 import 'package:todo_app/ui/theme.dart';
 import 'package:todo_app/ui/widgets/button.dart';
 import 'package:todo_app/ui/widgets/input_field.dart';
@@ -15,6 +16,7 @@ class AddTaskPage extends StatefulWidget {
 }
 
 class _AddTaskPageState extends State<AddTaskPage> {
+  final TaskController _taskController = Get.put(TaskController());
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _noteController = TextEditingController();
 
@@ -195,8 +197,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
     }
   }
 
-  _addTaskToDb() {
-    Task(
+  _addTaskToDb() async {
+    int value = await _taskController.addTask(
+        task: Task(
       title: _titleController.text,
       note: _noteController.text,
       isCompleted: 0,
@@ -206,7 +209,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       color: _selectedColor,
       reminder: _selectReminder,
       repeat: _selectRepeat,
-    );
+    ));
   }
 
   _colorPallet() {

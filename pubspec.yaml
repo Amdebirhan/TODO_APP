@@ -42,6 +42,8 @@ dependencies:
   date_picker_timeline:
   flutter_local_notifications:
   flutter_native_timezone:
+  flutter_staggered_animations:
+  path_provider:
 
 dev_dependencies: 
   flutter_test:

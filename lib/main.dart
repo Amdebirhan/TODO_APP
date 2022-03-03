@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:todo_app/db/db_healper.dart';
 import 'package:todo_app/services/theme.services.dart';
 import 'package:todo_app/ui/theme.dart';
 import 'ui/Home_Page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await DBHelper.instance;
   await GetStorage.init();
   runApp(const MyApp());
 }
